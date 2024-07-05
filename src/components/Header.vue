@@ -13,13 +13,21 @@
                         </li>
 
                         <li class="nav-item">
-                            <RouterLink class="nav-link" to="/">Logout</RouterLink>
+                            <a class="nav-link" href="#" @click="logout()">Logout</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
-    
 </template>
+
+<script>
+    export default {
+        methods: {
+            logout() {
+                this.$store.dispatch('logout');
+            }
+        }
+    }
+</script>

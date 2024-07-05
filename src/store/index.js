@@ -17,11 +17,16 @@ export default createStore({
         .then((response) => {
           localStorage.setItem('token', `${response.data.token_type} ${response.data.access_token}`);
 
-          router.push('dashboard');
+          router.push('/dashboard');
         }).catch((err) => {
           console.log(err);
           console.log(err.response.data.error);
         });
+    },
+
+    logout(ctx) {
+      localStorage.removeItem('token');
+      router.push('/');
     }
   },
 })
