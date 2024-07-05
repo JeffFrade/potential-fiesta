@@ -9,19 +9,19 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <RouterLink class="nav-link" to="/dashboard">Dashboard</RouterLink>
+                            <RouterLink class="nav-link" to="/dashboard"><i class="fa fa-fw fa-solid fa-gauge-high"></i> Dashboard</RouterLink>
                         </li>
 
                         <li class="nav-item">
-                            <RouterLink class="nav-link" to="/categorias">Categorias</RouterLink>
+                            <RouterLink class="nav-link" to="/categorias"><i class="fa fa-fw fa-solid fa-tags"></i> Categorias</RouterLink>
                         </li>
 
                         <li class="nav-item">
-                            <RouterLink class="nav-link" to="/produtos">Produtos</RouterLink>
+                            <RouterLink class="nav-link" to="/produtos"><i class="fa fa-fw fa-solid fa-database"></i> Produtos</RouterLink>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#" @click="logout()">Logout</a>
+                            <a class="nav-link" href="#" @click="logout()"><i class="fa fa-fw fa-solid fa-power-off"></i> Logout</a>
                         </li>
                     </ul>
                 </div>

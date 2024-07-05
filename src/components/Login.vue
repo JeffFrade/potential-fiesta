@@ -9,14 +9,20 @@
             <h3 class="mb-5">Login</h3>
 
             <div class="form-outline mb-4">
-              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" v-model="email" placeholder="E-mail"/>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-fw fa-solid fa-envelope"></i></span>
+                <input type="email" id="typeEmailX-2" class="form-control form-control-lg" v-model="email" placeholder="E-mail"/>
+              </div>
             </div>
 
             <div class="form-outline mb-4">
-              <input type="password" id="typePasswordX-2" class="form-control form-control-lg"  v-model="password" placeholder="Senha"/>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1"><i class="fa fa-fw fa-solid fa-lock"></i></span>
+                <input type="password" id="typePasswordX-2" class="form-control form-control-lg"  v-model="password" placeholder="Senha"/>
+              </div>
             </div>
 
-            <button class="btn btn-primary btn-lg btn-block" @click="login()">Login</button>
+            <button class="btn btn-primary btn-lg btn-block" @click="login()"><i class="fa fa-fw fa-solid fa-right-to-bracket"></i>&nbsp; Login</button>
           </div>
         </div>
       </div>
