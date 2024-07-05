@@ -19,6 +19,28 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../components/Dashboard.vue')
+    },
+    {
+      path: '/categorias',
+      name: 'categorias',
+      meta: {
+        requiresAuth: true // Add meta field to indicate protected route
+      },
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../components/Dashboard.vue')
+    },
+    {
+      path: '/produtos',
+      name: 'produtos',
+      meta: {
+        requiresAuth: true // Add meta field to indicate protected route
+      },
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../components/Dashboard.vue')
     }
   ]
 });

@@ -13,6 +13,14 @@
                         </li>
 
                         <li class="nav-item">
+                            <RouterLink class="nav-link" to="/categorias">Categorias</RouterLink>
+                        </li>
+
+                        <li class="nav-item">
+                            <RouterLink class="nav-link" to="/produtos">Produtos</RouterLink>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link" href="#" @click="logout()">Logout</a>
                         </li>
                     </ul>
