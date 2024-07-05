@@ -2,7 +2,9 @@
     <div>
         <Header/>
 
-        <h1>Logado</h1>
+        <main>
+            <h1>Logado</h1>
+        </main>
     </div>
 </template>
     
@@ -16,3 +18,8 @@
     }
 </script>
   
+<style scoped>
+    main {
+        margin-top: 20px;
+    }
+</style>
