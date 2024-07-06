@@ -14,6 +14,10 @@
             data: {
                 type: Object,
                 default: () => ({})
+            },
+            params: {
+                type: Object,
+                default: () => ({})
             }
         },
 
@@ -26,18 +30,21 @@
 
         methods: {
             navigateDown() {
+                let query = this.params.push({page: this.data.current_page - 1});
+
                 this.$store.dispatch('listarProdutos', {
                     params: {
-                        page: this.data.current_page - 1
+                        query
                     }
                 });
             },
 
             navigateUp() {
+                let query = Object.assign(this.params, {page: this.data.current_page + 1});
+                console.log(query);
+
                 this.$store.dispatch('listarProdutos', {
-                    params: {
-                        page: this.data.current_page + 1
-                    }
+                    params: query
                 });
             }
         },

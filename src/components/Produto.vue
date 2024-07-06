@@ -54,7 +54,6 @@
           nome: '',
           categoria: '',
           preco: '',
-          foto: '',
           situacao: ''
         }
       },
@@ -64,14 +63,12 @@
             nome: this.nome,
             id_categoria: this.categoria,
             preco: this.preco,
-            foto: this.foto,
             situacao: this.situacao
           });
 
           this.nome = '';
           this.categoria = '';
           this.preco = '';
-          this.foto = '';
           this.situacao = '';
         }
       }
