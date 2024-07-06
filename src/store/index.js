@@ -47,6 +47,10 @@ export default createStore({
       return instance.get('/categorias').then((response) => {
         ctx.commit('getCategorias', response.data);
       }).catch((err) => {
+        if (err.status == 401) {
+          next('/');
+        }
+
         console.log(err.response.data.error);
       });
     },
@@ -55,6 +59,10 @@ export default createStore({
       return instance.post('/categorias', data).then((response) => {
         ctx.commit('cadastrarCategoria', response.data);
       }).catch((err) => {
+        if (err.status == 401) {
+          next('/');
+        }
+
         console.log(err.response.data.error);
       });
     },
@@ -71,6 +79,10 @@ export default createStore({
       return instance.post('/produtos', data).then((response) => {
         ctx.commit('cadastrarProduto', response.data);
       }).catch((err) => {
+        if (err.status == 401) {
+          next('/');
+        }
+
         console.log(err.response.data.error);
       });
     },

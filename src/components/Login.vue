@@ -39,7 +39,9 @@
           password: ''
         }
       },
-
+      mounted() {
+        localStorage.removeItem('token');
+      },
       methods: {
         login() {
           this.$store.dispatch('login', {
