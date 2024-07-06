@@ -13,10 +13,6 @@
                         </li>
 
                         <li class="nav-item">
-                            <RouterLink class="nav-link" to="/categorias"><i class="fa fa-fw fa-solid fa-tags"></i> Categorias</RouterLink>
-                        </li>
-
-                        <li class="nav-item">
                             <RouterLink class="nav-link" to="/produtos"><i class="fa fa-fw fa-solid fa-database"></i> Produtos</RouterLink>
                         </li>
 

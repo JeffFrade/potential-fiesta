@@ -2,7 +2,7 @@
     <div>
         <Header/>
 
-        <main>
+        <main class="container">
             <h1>Logado</h1>
         </main>
     </div>

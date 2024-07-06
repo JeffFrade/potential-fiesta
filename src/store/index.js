@@ -2,18 +2,28 @@ import { createStore } from 'vuex'
 import axios from 'axios'
 import router from '@/router'
 
+const instance = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  headers: {'Authorization': localStorage.getItem('token')}
+});
+
+
 export default createStore({
   state: {
-    
-  },
-  getters: {
+    categorias: []
   },
   mutations: {
+    cadastrarCategoria(state, payload) {
+      state.categorias.push(payload);
+    },
 
+    getCategorias(state, payload) {
+      state.categorias = payload.data;
+    }
   },
   actions: {
     login(ctx, data) {
-      return axios.post('http://localhost:8100/api/login', data)
+      return instance.post('/login', data)
         .then((response) => {
           localStorage.setItem('token', `${response.data.token_type} ${response.data.access_token}`);
 
@@ -22,6 +32,22 @@ export default createStore({
           console.log(err);
           console.log(err.response.data.error);
         });
+    },
+
+    listarCategorias(ctx, data) {
+      return instance.get('/categorias').then((response) => {
+        ctx.commit('getCategorias', response.data);
+      }).catch((err) => {
+        console.log(err.response.data.error);
+      });
+    },
+
+    cadastrarCategoria(ctx, data) {
+      return instance.post('/categorias', data).then((response) => {
+        ctx.commit('cadastrarCategoria', response.data);
+      }).catch((err) => {
+        console.log(err.response.data.error);
+      });
     },
 
     logout(ctx) {

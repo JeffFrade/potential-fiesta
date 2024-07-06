@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Login from '../components/Login.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,17 +20,6 @@ const router = createRouter({
       component: () => import('../components/Dashboard.vue')
     },
     {
-      path: '/categorias',
-      name: 'categorias',
-      meta: {
-        requiresAuth: true // Add meta field to indicate protected route
-      },
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../components/Dashboard.vue')
-    },
-    {
       path: '/produtos',
       name: 'produtos',
       meta: {
@@ -40,7 +28,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../components/Dashboard.vue')
+      component: () => import('../components/Produtos.vue')
     }
   ]
 });
