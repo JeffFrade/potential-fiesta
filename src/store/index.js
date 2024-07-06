@@ -10,7 +10,8 @@ const instance = axios.create({
 
 export default createStore({
   state: {
-    categorias: []
+    categorias: [],
+    produtos: []
   },
   mutations: {
     cadastrarCategoria(state, payload) {
@@ -19,6 +20,10 @@ export default createStore({
 
     getCategorias(state, payload) {
       state.categorias = payload.data;
+    },
+
+    getProdutos(state, payload) {
+      state.produtos = payload.data;
     }
   },
   actions: {
@@ -45,6 +50,14 @@ export default createStore({
     cadastrarCategoria(ctx, data) {
       return instance.post('/categorias', data).then((response) => {
         ctx.commit('cadastrarCategoria', response.data);
+      }).catch((err) => {
+        console.log(err.response.data.error);
+      });
+    },
+
+    listarProdutos(ctx, data) {
+      return instance.get('/produtos', data).then((response) => {
+        ctx.commit('getProdutos', response.data);
       }).catch((err) => {
         console.log(err.response.data.error);
       });
