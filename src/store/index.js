@@ -22,6 +22,10 @@ export default createStore({
       state.categorias = payload.data;
     },
 
+    cadastrarProduto(state, payload) {
+      state.produtos.push(payload);
+    },
+
     getProdutos(state, payload) {
       state.produtos = payload.data;
     }
@@ -58,6 +62,14 @@ export default createStore({
     listarProdutos(ctx, data) {
       return instance.get('/produtos', data).then((response) => {
         ctx.commit('getProdutos', response.data);
+      }).catch((err) => {
+        console.log(err.response.data.error);
+      });
+    },
+
+    cadastrarProduto(ctx, data) {
+      return instance.post('/produtos', data).then((response) => {
+        ctx.commit('cadastrarProduto', response.data);
       }).catch((err) => {
         console.log(err.response.data.error);
       });
