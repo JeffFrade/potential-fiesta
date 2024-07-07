@@ -11,7 +11,8 @@ const instance = axios.create({
 export default createStore({
   state: {
     categorias: [],
-    produtos: []
+    produtos: [],
+    messages: [],
   },
   mutations: {
     cadastrarCategoria(state, payload) {
@@ -28,6 +29,10 @@ export default createStore({
 
     getProdutos(state, payload) {
       state.produtos = payload.data;
+    },
+
+    setErrors(state, payload) {
+      state.messages = payload;
     }
   },
   actions: {
@@ -39,7 +44,13 @@ export default createStore({
           router.push('/dashboard');
         }).catch((err) => {
           console.log(err);
-          console.log(err.response.data.error);
+
+          if (err.response.status == 401) {
+            ctx.commit('setErrors', [{
+              message: 'Usuário ou senha inválidos',
+              color: 'danger'
+            }]);
+          }
         });
     },
 
@@ -47,7 +58,7 @@ export default createStore({
       return instance.get('/categorias').then((response) => {
         ctx.commit('getCategorias', response.data);
       }).catch((err) => {
-        if (err.status == 401) {
+        if (err.response.status == 401) {
           next('/');
         }
 
@@ -59,7 +70,7 @@ export default createStore({
       return instance.post('/categorias', data).then((response) => {
         ctx.commit('cadastrarCategoria', response.data);
       }).catch((err) => {
-        if (err.status == 401) {
+        if (err.response.status == 401) {
           next('/');
         }
 
@@ -72,6 +83,10 @@ export default createStore({
         ctx.commit('getProdutos', response.data);
       }).catch((err) => {
         console.log(err.response.data.error);
+
+        if (err.response.status == 401) {
+          next('/');
+        }
       });
     },
 
@@ -79,11 +94,11 @@ export default createStore({
       return instance.post('/produtos', data).then((response) => {
         ctx.commit('cadastrarProduto', response.data);
       }).catch((err) => {
-        if (err.status == 401) {
+        console.log(err.response.data.error);
+
+        if (err.response.status == 401) {
           next('/');
         }
-
-        console.log(err.response.data.error);
       });
     },
 
