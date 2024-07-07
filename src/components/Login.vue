@@ -28,10 +28,14 @@
       </div>
     </div>
   </div>
+
+  <Toastr v-for="(message, index) in $store.state.messages" :key="index" :params="message"/>
 </section>
 </template>
 
 <script>
+    import Toastr from '@/components/Toastr.vue'
+
     export default {
       data() {
         return {
@@ -39,7 +43,12 @@
           password: ''
         }
       },
-
+      components: {
+        Toastr
+      },
+      mounted() {
+        localStorage.removeItem('token');
+      },
       methods: {
         login() {
           this.$store.dispatch('login', {
